@@ -49,6 +49,9 @@ export default function Home() {
           <div className="button-row">
             <a className="button primary" href="#projects">View projects</a>
             <a className="button secondary" href="#contact">Let&apos;s connect</a>
+            <span className="button disabled-button" title="Add your CV file to enable this button">
+              CV coming soon
+            </span>
           </div>
         </div>
         <div className="portrait-wrap">
@@ -77,6 +80,20 @@ export default function Home() {
           <div><strong>Backend</strong><span>Node.js, APIs, SQL, Prisma</span></div>
           <div><strong>Tools</strong><span>Git, GitHub, Linux, VS Code</span></div>
         </div>
+        <div className="experience-card">
+          <div className="experience-heading">
+            <div>
+              <p className="project-number">CURRENTLY</p>
+              <h3>Full-Stack Engineer</h3>
+            </div>
+            <span>BMC Software</span>
+          </div>
+          <p>
+            Building reliable software while studying Computer Science and Engineering
+            at Adama Science and Technology University. My work combines practical
+            product development with strong foundations in algorithms and system design.
+          </p>
+        </div>
       </section>
 
       <section id="projects" className="section container">
@@ -93,6 +110,28 @@ export default function Home() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="section stats-section container">
+        <p className="eyebrow">PROBLEM SOLVING</p>
+        <h2>Always learning, always improving.</h2>
+        <div className="stats-grid">
+          <a className="stat-card" href="https://codeforces.com/profile/diro15" target="_blank" rel="noreferrer">
+            <strong>603</strong>
+            <span>Codeforces rating</span>
+            <small>100+ problems solved ↗</small>
+          </a>
+          <a className="stat-card" href="https://leetcode.com/u/everydaaycode/" target="_blank" rel="noreferrer">
+            <strong>100+</strong>
+            <span>LeetCode problems</span>
+            <small>Algorithms and data structures ↗</small>
+          </a>
+          <div className="stat-card">
+            <strong>∞</strong>
+            <span>Curiosity</span>
+            <small>Learning something new every day</small>
+          </div>
         </div>
       </section>
 
