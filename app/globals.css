@@ -80,6 +80,27 @@ h3 { font-size: 1.35rem; }
 .message-meta a { color: var(--primary); }
 .message-meta time { margin-left: auto; color: var(--muted); font-size: .85rem; }
 .message-card p { margin: 18px 0 0; white-space: pre-wrap; }
+.admin-projects { margin-top: 85px; border-top: 1px solid var(--line); padding-top: 65px; }
+.admin-section-heading { display: flex; justify-content: space-between; align-items: flex-start; }
+.project-form { display: grid; gap: 16px; max-width: 800px; margin-top: 25px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 24px; }
+.project-form label { display: grid; gap: 6px; font-size: .9rem; font-weight: 700; }
+.project-form input:not([type="checkbox"]), .project-form textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 11px; font: inherit; }
+.form-two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field-hint { color: var(--muted); font-weight: 400; }
+.checkbox-row { display: flex; gap: 25px; }
+.checkbox-row label { display: flex; grid-template-columns: auto auto; align-items: center; gap: 8px; }
+.admin-list { display: grid; gap: 12px; margin-top: 55px; }
+.admin-list h2 { margin-bottom: 10px; }
+.admin-project-row { display: grid; grid-template-columns: 1fr auto auto; gap: 20px; align-items: center; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 16px 20px; }
+.admin-project-row p { margin: 4px 0 0; color: var(--muted); font-size: .85rem; }
+.row-status { display: flex; gap: 6px; flex-wrap: wrap; font-size: .75rem; font-weight: 700; }
+.row-status span { border-radius: 99px; padding: 4px 8px; }
+.status-published { background: #e7f6ec; color: #18794e; }
+.status-draft { background: #fef0c7; color: #b54708; }
+.status-featured { background: #eeedff; color: var(--primary-dark); }
+.row-actions { display: flex; gap: 12px; }
+.text-button { border: 0; background: none; color: var(--primary); font: inherit; font-weight: 700; cursor: pointer; }
+.text-button.danger { color: #d92d20; }
 @media (max-width: 760px) {
   .nav-links { gap: 14px; }
   .hero { flex-direction: column-reverse; align-items: flex-start; min-height: auto; padding-top: 60px; }
@@ -90,4 +111,6 @@ h3 { font-size: 1.35rem; }
   .contact-section { gap: 35px; }
   .experience-heading { flex-direction: column; gap: 5px; }
   .message-meta time { width: 100%; margin-left: 0; }
+  .form-two-column, .admin-project-row { grid-template-columns: 1fr; }
+  .admin-project-row { gap: 12px; }
 }
