@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ContactForm from "./components/contact-form";
 import ProjectBrowser from "./components/project-browser";
+import SiteNav from "./components/site-nav";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -21,15 +22,7 @@ export default async function Home() {
   return (
     <main>
       <header className="site-header">
-        <nav className="nav container" aria-label="Main navigation">
-          <a className="logo" href="#home">DA.dev</a>
-          <div className="nav-links">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="/blog">Blog</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </nav>
+        <SiteNav />
       </header>
 
       <section id="home" className="hero container">
