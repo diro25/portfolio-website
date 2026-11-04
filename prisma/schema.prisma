@@ -15,3 +15,18 @@ model ContactMessage {
   createdAt DateTime @default(now())
   read      Boolean  @default(false)
 }
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  slug         String   @unique
+  title        String
+  description  String
+  details      String
+  technologies String
+  githubUrl    String?
+  demoUrl      String?
+  featured     Boolean  @default(false)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

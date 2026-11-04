@@ -1,30 +1,23 @@
 import Image from "next/image";
 import ContactForm from "./components/contact-form";
+import ProjectBrowser from "./components/project-browser";
+import { prisma } from "@/lib/prisma";
 
-const projects = [
-  {
-    title: "Hospital Management System",
-    description: "A Java Swing application for patient records, staff, and scheduling.",
-    technologies: ["Java", "Java Swing", "SQL"]
-  },
-  {
-    title: "Ethiopian Coffee Project",
-    description: "A web platform celebrating Ethiopian coffee varieties and culture.",
-    technologies: ["HTML", "CSS", "JavaScript"]
-  },
-  {
-    title: "To-Do App",
-    description: "A focused task management app for organizing daily work.",
-    technologies: ["HTML", "CSS", "JavaScript"]
-  },
-  {
-    title: "Tic-Tac-Toe Game",
-    description: "An interactive browser game built to practice state and game logic.",
-    technologies: ["JavaScript", "CSS"]
-  }
-];
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+  const projects = (await prisma.project.findMany({
+    where: { published: true },
+    orderBy: [{ featured: "desc" }, { createdAt: "desc" }]
+  })).map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    description: project.description,
+    technologies: JSON.parse(project.technologies) as string[],
+    githubUrl: project.githubUrl,
+    demoUrl: project.demoUrl
+  }));
+
   return (
     <main>
       <header className="site-header">
@@ -99,18 +92,7 @@ export default function Home() {
       <section id="projects" className="section container">
         <p className="eyebrow">SELECTED WORK</p>
         <h2>Projects I&apos;m proud of.</h2>
-        <div className="project-grid">
-          {projects.map((project) => (
-            <article className="project-card" key={project.title}>
-              <p className="project-number">0{projects.indexOf(project) + 1}</p>
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div className="tags">
-                {project.technologies.map((technology) => <span key={technology}>{technology}</span>)}
-              </div>
-            </article>
-          ))}
-        </div>
+        <ProjectBrowser projects={projects} />
       </section>
 
       <section className="section stats-section container">
