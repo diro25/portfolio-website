@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname === "/api/analytics" && request.method === "POST") {
+    return NextResponse.next();
+  }
   const authorization = request.headers.get("authorization");
   const expectedPassword = process.env.ADMIN_PASSWORD;
 
@@ -25,5 +28,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/projects/:path*", "/api/blog"]
+  matcher: ["/admin/:path*", "/api/projects/:path*", "/api/blog", "/api/analytics"]
 };

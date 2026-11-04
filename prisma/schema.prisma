@@ -54,3 +54,10 @@ model Comment {
   postId    Int
   post      BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
+
+model AnalyticsEvent {
+  id        Int      @id @default(autoincrement())
+  path      String
+  eventType String   @default("page_view")
+  createdAt DateTime @default(now())
+}

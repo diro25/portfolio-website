@@ -95,6 +95,16 @@ h3 { font-size: 1.35rem; }
 .message-meta a { color: var(--primary); }
 .message-meta time { margin-left: auto; color: var(--muted); font-size: .85rem; }
 .message-card p { margin: 18px 0 0; white-space: pre-wrap; }
+.analytics-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0; }
+.analytics-stats div { display: flex; flex-direction: column; gap: 5px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 22px; }
+.analytics-stats strong { color: var(--primary); font-size: 2rem; }
+.analytics-stats span, .analytics-table p { color: var(--muted); }
+.analytics-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.analytics-table { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 22px; }
+.analytics-table h3 { margin-top: 0; }
+.analytics-row { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding: 12px 0; font-size: .9rem; }
+.analytics-row span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.analytics-row small { color: var(--muted); white-space: nowrap; }
 .admin-projects { margin-top: 85px; border-top: 1px solid var(--line); padding-top: 65px; }
 .admin-section-heading { display: flex; justify-content: space-between; align-items: flex-start; }
 .project-form { display: grid; gap: 16px; max-width: 800px; margin-top: 25px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 24px; }
@@ -128,5 +138,6 @@ h3 { font-size: 1.35rem; }
   .experience-heading { flex-direction: column; gap: 5px; }
   .message-meta time { width: 100%; margin-left: 0; }
   .form-two-column, .admin-project-row { grid-template-columns: 1fr; }
+  .analytics-stats, .analytics-columns { grid-template-columns: 1fr; }
   .admin-project-row { gap: 12px; }
 }
