@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import ProjectManager from "./project-manager";
+import BlogManager from "./blog-manager";
 
 export const dynamic = "force-dynamic";
 
@@ -25,6 +26,7 @@ export default async function AdminPage() {
           ))}
         </div>
         <ProjectManager />
+        <BlogManager />
       </div>
     </main>
   );
