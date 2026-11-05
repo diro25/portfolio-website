@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname === "/api/analytics" && request.method === "POST") {
+  const isPublicEvent =
+    (request.nextUrl.pathname === "/api/analytics" && request.method === "POST") ||
+    (request.nextUrl.pathname.endsWith("/comments") && request.method === "POST");
+
+  if (isPublicEvent) {
     return NextResponse.next();
   }
   const authorization = request.headers.get("authorization");
@@ -28,5 +32,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/projects/:path*", "/api/blog", "/api/analytics"]
+  matcher: ["/admin/:path*", "/api/projects/:path*", "/api/blog/:path*", "/api/analytics"]
 };
