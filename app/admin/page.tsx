@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import ProjectManager from "./project-manager";
 import BlogManager from "./blog-manager";
 import AnalyticsPanel from "./analytics-panel";
+import MessageManager from "./message-manager";
 
 export const dynamic = "force-dynamic";
 
@@ -14,18 +15,7 @@ export default async function AdminPage() {
         <p className="eyebrow">ADMIN INBOX</p>
         <h1>Contact messages</h1>
         <p className="section-intro">Messages submitted through your portfolio.</p>
-        <div className="message-list">
-          {messages.length === 0 ? <p>No messages yet.</p> : messages.map((message) => (
-            <article className="message-card" key={message.id}>
-              <div className="message-meta">
-                <strong>{message.name}</strong>
-                <a href={`mailto:${message.email}`}>{message.email}</a>
-                <time dateTime={message.createdAt.toISOString()}>{message.createdAt.toLocaleString()}</time>
-              </div>
-              <p>{message.message}</p>
-            </article>
-          ))}
-        </div>
+        <MessageManager initialMessages={messages.map((message) => ({ ...message, createdAt: message.createdAt.toISOString() }))} />
         <ProjectManager />
         <BlogManager />
         <AnalyticsPanel />

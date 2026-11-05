@@ -98,6 +98,10 @@ h3 { font-size: 1.35rem; }
 .message-meta a { color: var(--primary); }
 .message-meta time { margin-left: auto; color: var(--muted); font-size: .85rem; }
 .message-card p { margin: 18px 0 0; white-space: pre-wrap; }
+.message-card { transition: border-color .2s ease, box-shadow .2s ease; }
+.message-unread { border-left: 4px solid var(--primary); }
+.message-read { opacity: .78; }
+.message-card .row-actions { margin-top: 18px; }
 .analytics-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0; }
 .analytics-stats div { display: flex; flex-direction: column; gap: 5px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 22px; }
 .analytics-stats strong { color: var(--primary); font-size: 2rem; }
