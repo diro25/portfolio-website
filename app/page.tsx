@@ -21,6 +21,22 @@ export default async function Home() {
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Diriba Adugna Teka",
+          url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+          jobTitle: "Full-Stack Engineer",
+          sameAs: [
+            "https://github.com/diro25",
+            "https://www.linkedin.com/in/diriba-adugna-4ab337383",
+            "https://codeforces.com/profile/diro15",
+            "https://leetcode.com/u/everydaaycode/"
+          ]
+        }) }}
+      />
       <header className="site-header">
         <SiteNav />
       </header>
