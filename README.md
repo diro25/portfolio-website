@@ -30,3 +30,6 @@ social metadata use the correct URL.
 - `npm run dev` — start the development server
 - `npm run build` — create a production build
 - `npm run db:push` — sync the Prisma schema to the database
+
+Vercel uses the `vercel-build` script, which synchronizes the Prisma schema
+against the configured PostgreSQL database before building the application.
