@@ -8,6 +8,7 @@
     "vercel-build": "prisma generate && prisma db push && next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "vitest run",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "db:seed": "tsx prisma/seed.ts",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^19.1.0",
     "prisma": "^6.19.0",
     "typescript": "^5.8.0",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "vitest": "^3.2.4"
   }
 }

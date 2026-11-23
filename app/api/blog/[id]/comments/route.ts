@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { isRateLimited } from "@/lib/rateLimit";
 
 const commentSchema = z.object({
   name: z.string().trim().min(2).max(80),
@@ -9,6 +10,13 @@ const commentSchema = z.object({
 });
 
 export async function POST(request: Request, context: { params: Promise<{ id: string }> }) {
+  if (isRateLimited("comment", request, 10, 15 * 60 * 1000)) {
+    return NextResponse.json(
+      { message: "Too many comment submissions. Try again later." },
+      { status: 429, headers: { "Retry-After": "900" } }
+    );
+  }
+
   const { id } = await context.params;
   const postId = Number(id);
   const parsed = commentSchema.safeParse(await request.json());

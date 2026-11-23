@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { isRateLimited } from "@/lib/rateLimit";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2).max(80),
@@ -9,6 +10,13 @@ const contactSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  if (isRateLimited("contact", request, 5, 15 * 60 * 1000)) {
+    return NextResponse.json(
+      { message: "Too many submissions. Try again later." },
+      { status: 429, headers: { "Retry-After": "900" } }
+    );
+  }
+
   const body = await request.json();
   const parsed = contactSchema.safeParse(body);
 
